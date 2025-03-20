@@ -1,6 +1,5 @@
 import { cart } from "../data/cart.js";
 import { orders } from "../data/orders.js";
-import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
 import { getProduct, loadProducts } from "../data/products.js";
 
 function renderOrders() {
@@ -13,10 +12,10 @@ function renderOrders() {
     order.products.forEach((product) => {
       const matchingProduct = getProduct(product.productId) || {};
 
-      const orderDate = dayjs(order.orderTime);
-      const estimatedDate = dayjs(product.estimatedDeliveryTime);
+      const orderDate = window.dayjs(order.orderTime);
+      const estimatedDate = window.dayjs(product.estimatedDeliveryTime);
       const totalDeliveryDays = estimatedDate.diff(orderDate, "day");
-      const today = dayjs();
+      const today = window.dayjs();
       const daysPassed = today.diff(orderDate, "day");
 
       let progressWidth = "30%";
@@ -29,7 +28,7 @@ function renderOrders() {
         preparingColor = "black";
         shippedColor = "black";
         deliveredColor = "rgb(6, 125, 98)";
-      } else if (daysPassed >= totalDeliveryDays * 0.5) {
+      } else if (daysPassed >= totalDeliveryDays * 0.7) {
         progressWidth = "70%";
         preparingColor = "black";
         shippedColor = "rgb(6, 125, 98)";
