@@ -1,5 +1,4 @@
 import { orders } from "../data/orders.js";
-import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
 import { cart } from "../data/cart.js";
 import { formatCurrency } from "./utils/currencyUtility.js";
 import { loadProducts, getProduct } from "../data/products.js";
@@ -23,7 +22,7 @@ function renderOrders() {
 
   //  Ensure each order appears **only once**
   orders.forEach((order) => {
-    const formattedDate = dayjs(order.orderTime.estimatedDeliveryTime).format(
+    const formattedDate = window.dayjs(order.orderTime.estimatedDeliveryTime).format(
       "D MMMM YYYY"
     );
 
