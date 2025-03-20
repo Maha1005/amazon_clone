@@ -6,11 +6,12 @@ import { loadProducts, getProduct } from "../data/products.js";
 
 
 
-function clearOrders() {
+/* clearOrders() {
   localStorage.removeItem("orders"); // Remove orders from storage if using localStorage
   orders.length = 0; // Empty the orders array
 }
 clearOrders();
+*/
 function renderOrders() {
   //  Clear previous orders before rendering to prevent duplicates
   const ordersGrid = document.querySelector(".orders-grid");
